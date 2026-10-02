@@ -1,0 +1,42 @@
+@UserService_HostAddress = http://localhost:5013
+# Reemplaza este id con el que obtengas al crear o listar usuarios:
+@userId = 00000000-0000-0000-0000-000000000000
+
+### 1. Crear un usuario (POST)
+POST {{UserService_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "correo": "alessandro@ejemplo.com",
+  "password": "Password123!",
+  "nombre": "Alessandro Test",
+  "rol": "usuario"
+}
+
+### 2. Listar todos los usuarios (GET)
+GET {{UserService_HostAddress}}/api/users
+Accept: application/json
+
+### 3. Obtener un usuario por ID (GET)
+GET {{UserService_HostAddress}}/api/users/{{userId}}
+Accept: application/json
+
+### 4. Actualizar usuario (PUT)
+PUT {{UserService_HostAddress}}/api/users/{{userId}}
+Content-Type: application/json
+
+{
+  "nombre": "Alessandro Modificado",
+  "correo": "alessandro.mod@ejemplo.com"
+}
+
+### 5. Cambiar rol a admin (PATCH)
+PATCH {{UserService_HostAddress}}/api/users/{{userId}}/role
+Content-Type: application/json
+
+{
+  "rol": "admin"
+}
+
+### 6. Eliminar usuario (DELETE)
+DELETE {{UserService_HostAddress}}/api/users/{{userId}}
